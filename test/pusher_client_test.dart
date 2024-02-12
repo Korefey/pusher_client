@@ -5,8 +5,7 @@ import 'package:pusher_client/pusher_client.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  MethodChannel channel =
-      const MethodChannel('com.github.chinloyal/pusher_client');
+  MethodChannel channel = const MethodChannel('com.github.korefey/pusher_client');
   group('PusherClient Test | ', () {
     setUp(() {
       channel.setMockMethodCallHandler((call) {

@@ -1,4 +1,4 @@
-group 'com.github.chinloyal.pusher_client'
+group 'com.github.korefey.pusher_client'
 version '1.0-SNAPSHOT'
 
 buildscript {

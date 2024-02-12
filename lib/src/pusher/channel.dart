@@ -7,12 +7,10 @@ import 'package:pusher_client/src/models/event_stream_result.dart';
 import 'package:pusher_client/src/pusher/pusher_event.dart';
 
 class Channel extends StreamHandler {
-  static const MethodChannel _mChannel =
-      const MethodChannel('com.github.chinloyal/pusher_client');
+  static const MethodChannel _mChannel = const MethodChannel('com.github.korefey/pusher_client');
   static const classId = 'Channel';
 
-  static Map<String, void Function(PusherEvent?)> _eventCallbacks =
-      Map<String, void Function(PusherEvent?)>();
+  static Map<String, void Function(PusherEvent?)> _eventCallbacks = Map<String, void Function(PusherEvent?)>();
 
   final String name;
 
@@ -79,8 +77,7 @@ class Channel extends StreamHandler {
     var result = EventStreamResult.fromJson(jsonDecode(event.toString()));
 
     if (result.isPusherEvent) {
-      var callback = _eventCallbacks[
-          result.pusherEvent!.channelName! + result.pusherEvent!.eventName!];
+      var callback = _eventCallbacks[result.pusherEvent!.channelName! + result.pusherEvent!.eventName!];
       if (callback != null) {
         callback(result.pusherEvent);
       }

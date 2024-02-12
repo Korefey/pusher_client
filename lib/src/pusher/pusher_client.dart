@@ -7,7 +7,6 @@ import 'package:pusher_client/src/contracts/stream_handler.dart';
 import 'package:pusher_client/src/models/connection_error.dart';
 import 'package:pusher_client/src/models/connection_state_change.dart';
 import 'package:pusher_client/src/models/event_stream_result.dart';
-import 'package:pusher_client/src/pusher/channel.dart';
 
 part 'pusher_client.g.dart';
 
@@ -17,8 +16,7 @@ part 'pusher_client.g.dart';
 /// if auto connect is disabled this means you can call
 /// `connect()` at a later point.
 class PusherClient extends StreamHandler {
-  static const MethodChannel _channel =
-      const MethodChannel('com.github.chinloyal/pusher_client');
+  static const MethodChannel _channel = const MethodChannel('com.github.korefey/pusher_client');
   static const classId = 'PusherClient';
 
   static PusherClient? _singleton;
@@ -105,8 +103,7 @@ class PusherClient extends StreamHandler {
   /// Callback that is fired whenever the connection state of the
   /// connection changes. The state typically changes during connection
   /// to Pusher and during disconnection and reconnection.
-  void onConnectionStateChange(
-      void Function(ConnectionStateChange? state) callback) {
+  void onConnectionStateChange(void Function(ConnectionStateChange? state) callback) {
     _onConnectionStateChange = callback;
   }
 
@@ -123,13 +120,11 @@ class PusherClient extends StreamHandler {
     if (result.isConnectionStateChange) {
       _socketId = await _channel.invokeMethod('getSocketId');
 
-      if (_onConnectionStateChange != null)
-        _onConnectionStateChange!(result.connectionStateChange);
+      if (_onConnectionStateChange != null) _onConnectionStateChange!(result.connectionStateChange);
     }
 
     if (result.isConnectionError) {
-      if (_onConnectionError != null)
-        _onConnectionError!(result.connectionError);
+      if (_onConnectionError != null) _onConnectionError!(result.connectionError);
     }
   }
 }
