@@ -13,13 +13,13 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 A pusher client plugin that works.
                        DESC
-  s.homepage         = 'https://github.com/korefey/pusher_client'
+  s.homepage         = 'https://github.com/chinloyal/pusher_client'
   s.license          = { :file => '../LICENSE', :type => 'MIT' }
   s.author           = { 'Romario Chinloy' => 'jordain7@protonmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'PusherSwift', '~> 9.0'
+  s.dependency 'PusherSwiftWithEncryption', '~> 8.0.0'
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice.
